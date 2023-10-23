@@ -22,11 +22,16 @@ function App() {
 
   return (
     <>
-      <div>Hi</div>
       {invoices && console.log(invoices)}
-      {/*{console.log(invoices)}*/}
-      <Header invoicesjson={invoices}/>
-      <Toolbar />
+      <div className='row align-items-end m-3'>
+        <div className='col-md'>
+          <Header invoicesjson={invoices}/>
+        </div>
+        <div className='col-md'>
+          <Toolbar />
+        </div>
+
+      </div>
       <Footer />
     </>
   );

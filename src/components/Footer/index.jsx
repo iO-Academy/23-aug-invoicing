@@ -1,7 +1,7 @@
 const Footer = () => {
     return (
-        <footer>
-            <p>ⓒ Copyright iO Academy 2023</p>
+        <footer className='d-none d-sm-block border-top m-3 p-2'>
+            <p className='small'>ⓒ Copyright iO Academy 2023</p>
         </footer>
     )
 }

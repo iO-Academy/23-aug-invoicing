@@ -9,7 +9,7 @@ const Header = ({invoicesjson}) => {
         <>
             <div>
             <h1>Invoices</h1>
-            <p>There are {unpaid.length} unpaid invoices</p>
+            <p className='text-muted m-0'>There are {unpaid.length} unpaid invoices</p>
             </div>
         </>
     )
