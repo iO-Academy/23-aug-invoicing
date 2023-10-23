@@ -2,8 +2,6 @@ const Header = ({invoicesjson}) => {
     const unpaid = invoicesjson.filter(findUnpaid);
 
     function findUnpaid(invoice) {
-        // console.log('in findUnpaid');
-        // console.log(invoice);
         return invoice['status_name'] === 'Pending';
     }
 
