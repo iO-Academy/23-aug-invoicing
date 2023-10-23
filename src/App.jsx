@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import "./App.css";
+import InvoiceContainer from "./components/InvoiceContainer.jsx";
 
 function App() {
-  const [invoices, setInvoices] = useState({
-    data: [{ invoice_id: "testinvoice" }],
-  });
+  const [invoices, setInvoices] = useState([{ invoice_id: "testinvoice" }],
+  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,8 +20,7 @@ function App() {
 
   return (
     <>
-      <div>Hi</div>
-      {invoices && console.log(invoices)}
+      <InvoiceContainer invoices={invoices}/>
     </>
   );
 }
