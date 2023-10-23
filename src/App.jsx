@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import "./App.css";
+import Header from './components/Header'
 
 function App() {
-  const [invoices, setInvoices] = useState({
-    data: [{ invoice_id: "testinvoice" }],
-  });
+  const [invoices, setInvoices] = useState(
+    [{ invoice_id: "testinvoice" }]
+  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,6 +23,8 @@ function App() {
     <>
       <div>Hi</div>
       {invoices && console.log(invoices)}
+      {/*{console.log(invoices)}*/}
+      <Header invoicesjson={invoices}/>
     </>
   );
 }
