@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import "../index.css";
+import GeneralInvoiceData from "./GeneralInvoiceData";
 
 const Invoice = ({ invoice }) => {
   const { id, invoice_id, name, due, invoice_total, status, status_name } =
@@ -28,7 +29,7 @@ const Invoice = ({ invoice }) => {
     }
   }
 
-  let formattedDate = new Date(due).toLocaleDateString("en-gb", {
+  const formattedDate = new Date(due).toLocaleDateString("en-gb", {
     day: "numeric",
     month: "short",
     year: "numeric",
@@ -63,7 +64,13 @@ const Invoice = ({ invoice }) => {
         <Modal.Header closeButton>
           <Modal.Title>Invoice #{idForModal}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+        <Modal.Body>
+          <GeneralInvoiceData
+            status_name={status_name}
+            due={due}
+            statusClass={statusClass}
+          />
+        </Modal.Body>
         <Modal.Footer></Modal.Footer>
       </Modal>
     </>
