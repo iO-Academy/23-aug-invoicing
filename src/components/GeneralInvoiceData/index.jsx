@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import "../../index.css";
 
-const GeneralInvoiceData = ({due, status_name, statusClass, invoiceDetails}) => {
+function GeneralInvoiceData({due, status_name, statusClass, invoiceDetails}) {
 
     const modDate = (due, dayDiff) => {
         const dueDate = new Date(due);

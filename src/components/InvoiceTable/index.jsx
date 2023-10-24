@@ -2,7 +2,6 @@ import {useEffect, useState} from "react";
 
 function InvoiceTable({invoiceDetails}) {
 
-
     const details = invoiceDetails.details;
     const displayDetails = (item) => {
         return (

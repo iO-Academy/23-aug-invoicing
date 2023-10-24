@@ -43,7 +43,7 @@ function Invoice({invoice}) {
         fetchData().catch(console.error);
     }, []);
 
-    function statusClass() {
+    const statusClass = () => {
         if (status_name === "Pending") {
             return "btn-outline-warning";
         } else if (status_name === "Cancelled") {
