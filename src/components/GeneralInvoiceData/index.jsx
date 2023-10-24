@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import "../../index.css";
 
-function GeneralInvoiceData({due, status_name, statusClass, invoiceDetails}) {
+function GeneralInvoiceData({due, status_name, statusClass, invoiceDetails, shopDetails}) {
 
     const modDate = (due, dayDiff) => {
         const dueDate = new Date(due);
@@ -17,10 +17,10 @@ function GeneralInvoiceData({due, status_name, statusClass, invoiceDetails}) {
         <div className="container d-flex justify-content-between px-0">
             <div className="px-0 mx-lg-5">
                 <p className="fw-bold mb-2">From</p>
-                <p className="m-0">Matthew Thompson</p>
-                <p className="m-0">Matthew's Den</p>
-                <p className="m-0">Keynsham</p>
-                <p className="m-0">New York</p>
+                <p className="m-0">{shopDetails.name}</p>
+                <p className="m-0">{shopDetails.addressline1}</p>
+                <p className="m-0">{shopDetails.addressline2}</p>
+                <p className="m-0">{shopDetails.city}</p>
                 <p className="fw-bold mt-3 mb-2">To</p>
                 <p className="m-0">{invoiceDetails.name}</p>
                 <p className="m-0">{invoiceDetails.street_address}</p>

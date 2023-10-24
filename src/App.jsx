@@ -20,6 +20,13 @@ function App() {
     fetchData().catch(console.error);
   }, []);
 
+  const shopDetails = {
+    name: 'Matthew Thompson',
+    addressline1: 'Matthew\'s Den',
+    addressline2: 'Keynsham',
+    city: 'New York City'
+  }
+
   return (
     <>
       {invoices && console.log(invoices)}
@@ -31,7 +38,7 @@ function App() {
           <Toolbar />
         </div>
       </div>
-      <InvoiceContainer invoices={invoices} />
+      <InvoiceContainer invoices={invoices} shopDetails={shopDetails} />
       <Footer />
     </>
   );

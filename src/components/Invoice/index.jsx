@@ -5,7 +5,7 @@ import "../../index.css";
 import InvoiceTable from "../InvoiceTable/index.jsx";
 import GeneralInvoiceData from "../GeneralInvoiceData/index.jsx";
 
-function Invoice({invoice}) {
+function Invoice({invoice, shopDetails}) {
     const {id, invoice_id, name, due, invoice_total, status, details, status_name} =
         invoice;
 
@@ -96,6 +96,7 @@ function Invoice({invoice}) {
                         due={due}
                         statusClass={statusClass}
                         invoiceDetails={invoiceDetails}
+                        shopDetails={shopDetails}
                     />
                     <InvoiceTable invoiceDetails={invoiceDetails}/>
                 </Modal.Body>
