@@ -1,7 +1,7 @@
 import {useState, useEffect} from "react";
 import Invoice from "./Invoice.jsx";
 
-const InvoiceContainer = (props) => {
+function InvoiceContainer (props) {
         return (
             <div className="container">
                 {props.invoices.map((invoice) => {
