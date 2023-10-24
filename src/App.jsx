@@ -6,7 +6,7 @@ import Toolbar from "./components/Toolbar";
 import Footer from "./components/Footer";
 
 function App() {
-  const [invoices, setInvoices] = useState([{ invoice_id: "testinvoice" }]);
+  const [invoices, setInvoices] = useState([{ id:'143', invoice_id: "testinvoice" }]);
 
   useEffect(() => {
     const fetchData = async () => {
