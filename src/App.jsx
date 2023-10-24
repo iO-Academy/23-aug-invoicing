@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import InvoiceContainer from "./components/InvoiceContainer.jsx";
+import InvoiceContainer from "./components/InvoiceContainer";
 import Header from "./components/Header";
 import Toolbar from "./components/Toolbar";
 import Footer from "./components/Footer";
@@ -20,9 +20,15 @@ function App() {
     fetchData().catch(console.error);
   }, []);
 
+  const shopDetails = {
+    name: 'Matthew Thompson',
+    addressline1: 'Matthew\'s Den',
+    addressline2: 'Keynsham',
+    city: 'New York City'
+  }
+
   return (
     <>
-      {invoices && console.log(invoices)}
       <div className="container row d-flex align-items-end justify-content-center m-auto mb-3">
         <div className="col-md">
           <Header invoicesjson={invoices} />
@@ -31,10 +37,9 @@ function App() {
           <Toolbar />
         </div>
       </div>
-      <InvoiceContainer invoices={invoices} />
+      <InvoiceContainer invoices={invoices} shopDetails={shopDetails} />
       <Footer />
     </>
   );
 }
-
 export default App;
