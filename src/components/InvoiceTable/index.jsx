@@ -33,7 +33,7 @@ function InvoiceTable({invoice}) {
         )
     }
 
-const calculatedTotal = details.reduce((total,current)=> total + Number(current.total), 0)
+const calculatedTotal = details.reduce((total, current)=> total + Number(current.total), 0)
     return (
         <>
             <div className="App">
