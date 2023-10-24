@@ -1,6 +1,5 @@
 import {useState, useEffect} from "react";
 
-
 const Invoice = ({invoice}) => {
     const {id, invoice_id, name, due, invoice_total, status, status_name} = invoice;
 
@@ -16,7 +15,7 @@ const Invoice = ({invoice}) => {
         }
     }
 
-    let formattedDate = new Date(due).toLocaleDateString('en-gb', {day:"numeric", month:"long", year:"numeric"})
+    let formattedDate = new Date(due).toLocaleDateString('en-gb', {day: "numeric", month: "long", year: "numeric"})
 
     return (
         <div className="border m-2 p-2 d-flex flex-row flex-wrap justify-content-between">
@@ -24,7 +23,9 @@ const Invoice = ({invoice}) => {
             <p className="m-0 small text-secondary">Due {formattedDate}</p>
             <p className="m-0 small text-secondary fw-semibold">{name}</p>
             <p className="fw-bold w-50 m-0">{"£ " + invoice_total}</p>
-            <p className={"btn m-0 p-1 " + statusClass()}><li className="small">{status_name}</li></p>
+            <p className={"btn m-0 p-1 " + statusClass()}>
+                <li className="small">{status_name}</li>
+            </p>
             <div className="d-none d-lg-block">></div>
         </div>
     )
