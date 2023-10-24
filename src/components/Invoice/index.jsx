@@ -80,10 +80,10 @@ function Invoice({invoice, shopDetails}) {
                             statusClass()
                         }
                     >
-                        <i class="fa-solid fa-circle bullet"></i>
+                        <i className="fa-solid fa-circle bullet"></i>
                         {status_name}
                     </p>
-                    <i class="fa-solid fa-chevron-right d-none d-lg-block"></i>
+                    <i className="fa-solid fa-chevron-right d-none d-lg-block"></i>
                 </div>
             </div>
             <Modal show={show} onHide={handleClose} centered size="lg">

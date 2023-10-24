@@ -32,16 +32,16 @@ function InvoiceTable({invoiceDetails}) {
                         displayDetails(index, item)
                     })}
                     <tr>
-                        <td colspan="2" className="text-end">Total</td>
-                        <td colspan="2" className="fw-bold text-end">£{calculatedTotal}</td>
+                        <td colSpan="2" className="text-end">Total</td>
+                        <td colSpan="2" className="fw-bold text-end">£{calculatedTotal}</td>
                     </tr>
                     <tr>
-                        <td colspan="2" className="text-end">Paid to date</td>
-                        <td colspan="2" className="fw-bold text-end">£{invoiceDetails.paid_to_date}</td>
+                        <td colSpan="2" className="text-end">Paid to date</td>
+                        <td colSpan="2" className="fw-bold text-end">£{invoiceDetails.paid_to_date}</td>
                     </tr>
                     <tr>
-                        <td colspan="2" className="fw-bold text-end bg-warning">Total due</td>
-                        <td colspan="2" className="fw-bold text-end bg-warning">£{invoiceDetails.invoice_total}</td>
+                        <td colSpan="2" className="fw-bold text-end bg-warning">Total due</td>
+                        <td colSpan="2" className="fw-bold text-end bg-warning">£{invoiceDetails.invoice_total}</td>
                     </tr>
                     </tbody>
                 </table>

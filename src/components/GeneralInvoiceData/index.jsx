@@ -35,7 +35,7 @@ function GeneralInvoiceData({due, status_name, statusClass, invoiceDetails, shop
                             statusClass()
                         }
                     >
-                        <i class="fa-solid fa-circle bullet"></i>
+                        <i className="fa-solid fa-circle bullet"></i>
                         {status_name}
                     </p>
                 </div>
