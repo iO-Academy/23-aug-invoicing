@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import "../index.css";
+import InvoiceTable from "./InvoiceTable/index.jsx";
 
 const Invoice = ({ invoice }) => {
-  const { id, invoice_id, name, due, invoice_total, status, status_name } =
+  const { id, invoice_id, name, due, invoice_total, status, details, status_name } =
     invoice;
 
   const [show, setShow] = useState(false);
@@ -63,7 +64,10 @@ const Invoice = ({ invoice }) => {
         <Modal.Header closeButton>
           <Modal.Title>Invoice #{idForModal}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+        <Modal.Body>
+          <InvoiceTable invoice={invoice}/>
+
+        </Modal.Body>
         <Modal.Footer></Modal.Footer>
       </Modal>
     </>
