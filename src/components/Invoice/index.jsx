@@ -1,10 +1,9 @@
 import {useState, useEffect} from "react";
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
-import "../index.css";
+import "../../index.css";
 
-import InvoiceTable from "./InvoiceTable/index.jsx";
-import GeneralInvoiceData from "./GeneralInvoiceData";
+import InvoiceTable from "../InvoiceTable/index.jsx";
+import GeneralInvoiceData from "../GeneralInvoiceData/index.jsx";
 
 function Invoice ({ invoice }) {
   const { id, invoice_id, name, due, invoice_total, status, details, status_name } =

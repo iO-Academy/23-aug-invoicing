@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react";
-import Invoice from "./Invoice.jsx";
+import Invoice from "../Invoice/index.jsx";
 
 function InvoiceContainer (props) {
         return (

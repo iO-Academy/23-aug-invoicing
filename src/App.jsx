@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import InvoiceContainer from "./components/InvoiceContainer.jsx";
+import InvoiceContainer from "./components/InvoiceContainer";
 import Header from "./components/Header";
 import Toolbar from "./components/Toolbar";
 import Footer from "./components/Footer";
