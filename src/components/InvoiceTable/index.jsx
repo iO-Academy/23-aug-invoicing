@@ -3,9 +3,9 @@ import {useEffect, useState} from "react";
 function InvoiceTable({invoiceDetails}) {
 
     const details = invoiceDetails.details;
-    const displayDetails = (item) => {
+    const displayDetails = (key, item) => {
         return (
-            <tr>
+            <tr key={key}>
                 <td>{item.description}</td>
                 <td>{item.quantity}</td>
                 <td>{item.rate}</td>
@@ -28,7 +28,9 @@ function InvoiceTable({invoiceDetails}) {
                     </tr>
                     </thead>
                     <tbody className="table-group-divider border-secondary-subtle">
-                    {details.map(displayDetails)}
+                    {details.map((index, item) => {
+                        displayDetails(index, item)
+                    })}
                     <tr>
                         <td colspan="2" className="text-end">Total</td>
                         <td colspan="2" className="fw-bold text-end">£{calculatedTotal}</td>

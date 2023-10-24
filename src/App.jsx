@@ -29,7 +29,6 @@ function App() {
 
   return (
     <>
-      {invoices && console.log(invoices)}
       <div className="container row d-flex align-items-end justify-content-center m-auto mb-3">
         <div className="col-md">
           <Header invoicesjson={invoices} />
