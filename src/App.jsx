@@ -30,7 +30,6 @@ function App() {
         <div className='col-md'>
           <Toolbar />
         </div>
-
       </div>
       <Footer />
     </>
