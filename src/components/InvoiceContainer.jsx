@@ -10,5 +10,4 @@ function InvoiceContainer (props) {
             </div>
         )
     }
-
     export default InvoiceContainer

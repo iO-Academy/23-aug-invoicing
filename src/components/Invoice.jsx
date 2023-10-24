@@ -1,33 +1,35 @@
-import { useState, useEffect } from "react";
+import {useState, useEffect} from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import "../index.css";
+
+import InvoiceTable from "./InvoiceTable/index.jsx";
 import GeneralInvoiceData from "./GeneralInvoiceData";
 
 function Invoice ({ invoice }) {
-  const { id, invoice_id, name, due, invoice_total, status, status_name } =
+  const { id, invoice_id, name, due, invoice_total, status, details, status_name } =
     invoice;
 
-  const [show, setShow] = useState(false);
-  const [idForModal, setIdForModal] = useState("");
+    const [show, setShow] = useState(false);
+    const [idForModal, setIdForModal] = useState("");
 
-  const handleClose = () => setShow(false);
-  const handleShow = (id) => {
-    setIdForModal(id);
-    setShow(true);
-  };
+    const handleClose = () => setShow(false);
+    const handleShow = (id) => {
+        setIdForModal(id);
+        setShow(true);
+    };
 
-  function statusClass() {
-    if (status_name === "Pending") {
-      return "btn-outline-warning";
-    } else if (status_name === "Cancelled") {
-      return "btn-outline-secondary";
-    } else if (status_name === "Paid") {
-      return "btn-outline-success";
-    } else {
-      return "btn-outline-danger";
+    function statusClass() {
+        if (status_name === "Pending") {
+            return "btn-outline-warning";
+        } else if (status_name === "Cancelled") {
+            return "btn-outline-secondary";
+        } else if (status_name === "Paid") {
+            return "btn-outline-success";
+        } else {
+            return "btn-outline-danger";
+        }
     }
-  }
 
   const formattedDate = new Date(due).toLocaleDateString("en-gb", {
     day: "numeric",
@@ -70,6 +72,7 @@ function Invoice ({ invoice }) {
             due={due}
             statusClass={statusClass}
           />
+          <InvoiceTable invoice={invoice}/>
         </Modal.Body>
         <Modal.Footer></Modal.Footer>
       </Modal>
