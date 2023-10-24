@@ -19,7 +19,7 @@ const Invoice = ({ invoice }) => {
 
   let formattedDate = new Date(due).toLocaleDateString("en-gb", {
     day: "numeric",
-    month: "long",
+    month: "short",
     year: "numeric",
   });
 
@@ -29,15 +29,18 @@ const Invoice = ({ invoice }) => {
       <p className="m-0 small text-secondary">Due {formattedDate}</p>
       <p className="m-0 small text-secondary fw-semibold">{name}</p>
       <p className="fw-bold w-50 m-0">{"£ " + invoice_total}</p>
-      <p
-        className={
-          "btn m-0 p-1 d-flex align-items-center gap-2 " + statusClass()
-        }
-      >
-        <i class="fa-solid fa-circle bullet"></i>
-        {status_name}
-      </p>
-      <div className="d-none d-lg-block">></div>
+      <div className="d-flex align-items-center gap-3">
+        <p
+          className={
+            "btn m-0 p-1 d-flex align-items-center gap-2 align-self-end " +
+            statusClass()
+          }
+        >
+          <i class="fa-solid fa-circle bullet"></i>
+          {status_name}
+        </p>
+        <i class="fa-solid fa-chevron-right d-none d-lg-block"></i>
+      </div>
     </div>
   );
 };
