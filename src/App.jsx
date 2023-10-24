@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import "./App.css";
+import InvoiceContainer from "./components/InvoiceContainer.jsx";
 import Header from './components/Header'
 import Toolbar  from "./components/Toolbar";
 import Footer from "./components/Footer";
+
 function App() {
-  const [invoices, setInvoices] = useState(
-    [{ invoice_id: "testinvoice" }]
-  );
+  const [invoices, setInvoices] = useState([{ invoice_id: "testinvoice" }]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,6 +31,7 @@ function App() {
           <Toolbar />
         </div>
       </div>
+<InvoiceContainer invoices={invoices}/>
       <Footer />
     </>
   );
