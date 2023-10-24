@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "../index.css";
 
-const Invoice = ({ invoice }) => {
+function Invoice ({ invoice }) {
   const { id, invoice_id, name, due, invoice_total, status, status_name } =
     invoice;
 
@@ -17,7 +17,7 @@ const Invoice = ({ invoice }) => {
     }
   }
 
-  let formattedDate = new Date(due).toLocaleDateString("en-gb", {
+  const formattedDate = new Date(due).toLocaleDateString("en-gb", {
     day: "numeric",
     month: "short",
     year: "numeric",

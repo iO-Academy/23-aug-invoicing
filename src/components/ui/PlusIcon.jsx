@@ -1,7 +1,7 @@
 import React from "react";
 import "../../index.css";
 
-const PlusIcon = () => {
+function PlusIcon () {
   return (
     <div className="plus-icon">
       <i class="fa-solid fa-plus"></i>

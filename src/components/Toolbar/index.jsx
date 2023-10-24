@@ -1,6 +1,6 @@
 import PlusIcon from "../ui/PlusIcon";
 
-const Toolbar = () => {
+function Toolbar () {
   return (
     <div className="row my-4 my-sm-0 mx-0">
       <div className="col d-flex justify-content-start p-0">

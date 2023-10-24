@@ -1,4 +1,4 @@
-const Header = ({invoicesjson}) => {
+function Header ({invoicesjson}) {
     const unpaid = invoicesjson.filter(findUnpaid);
 
     function findUnpaid(invoice) {
