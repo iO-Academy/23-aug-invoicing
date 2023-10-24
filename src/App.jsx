@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import InvoiceContainer from "./components/InvoiceContainer.jsx";
-import Header from './components/Header'
-import Toolbar  from "./components/Toolbar";
+import Header from "./components/Header";
+import Toolbar from "./components/Toolbar";
 import Footer from "./components/Footer";
 
 function App() {
@@ -23,15 +23,15 @@ function App() {
   return (
     <>
       {invoices && console.log(invoices)}
-      <div className='row align-items-end m-3'>
-        <div className='col-md'>
-          <Header invoicesjson={invoices}/>
+      <div className="row align-items-end m-3">
+        <div className="col-md">
+          <Header invoicesjson={invoices} />
         </div>
-        <div className='col-md'>
+        <div className="col-md">
           <Toolbar />
         </div>
       </div>
-<InvoiceContainer invoices={invoices}/>
+      <InvoiceContainer invoices={invoices} />
       <Footer />
     </>
   );
