@@ -1,25 +1,7 @@
 import {useEffect, useState} from "react";
 
-function InvoiceTable({invoice}) {
-    const [invoiceDetails, setInvoiceDetails] = useState({
-        'details': [{
-            'description': 'test',
-            'quantity': '1',
-            'rate': 'test',
-            'total': 'test'
-        }]
-    });
+function InvoiceTable({invoiceDetails}) {
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const response = await fetch(
-                `https://invoicing-api.dev.io-academy.uk/invoices/${invoice.id}`
-            );
-            const json = await response.json();
-            setInvoiceDetails(json.data);
-        };
-        fetchData().catch(console.error);
-    }, []);
 
     const details = invoiceDetails.details;
     const displayDetails = (item) => {
@@ -33,19 +15,19 @@ function InvoiceTable({invoice}) {
         )
     }
 
-const calculatedTotal = details.reduce((total, current)=> total + Number(current.total), 0)
+    const calculatedTotal = details.reduce((total, current) => total + Number(current.total), 0)
     return (
         <>
             <div className="App">
                 <table className="table w-100">
-                <thead>
+                    <thead>
                     <tr>
                         <th>Description</th>
                         <th>Quantity</th>
                         <th>Rate</th>
                         <th>Total</th>
                     </tr>
-                </thead>
+                    </thead>
                     <tbody className="table-group-divider border-secondary-subtle">
                     {details.map(displayDetails)}
                     <tr>
@@ -67,4 +49,5 @@ const calculatedTotal = details.reduce((total, current)=> total + Number(current
         </>
     )
 }
+
 export default InvoiceTable;
