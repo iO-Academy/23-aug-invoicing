@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PlusIcon from "../ui/PlusIcon";
 import Modal from "react-bootstrap/Modal";
+import NewItemForm from "../NewItemForm/index.jsx";
 import InvoiceHead from "../InvoiceHead";
 
 function Toolbar({ shopDetails }) {
@@ -39,6 +40,8 @@ function Toolbar({ shopDetails }) {
         </Modal.Header>
         <Modal.Body>
           <InvoiceHead shopDetails={shopDetails} />
+          <NewItemForm />
+
         </Modal.Body>
         <Modal.Footer></Modal.Footer>
       </Modal>
