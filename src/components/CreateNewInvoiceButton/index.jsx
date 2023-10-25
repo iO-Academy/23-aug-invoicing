@@ -28,8 +28,16 @@ function CreateNewInvoiceButton () {
         );
 
         console.log(response.status);
+        if (response.status === 200) {
+            alert("Successfully created new invoice.");
+        }
+        else if (response.status === 400) {
+            alert("Invalid invoice data.");
+        }
+        else {
+            alert("Unable to create invoice, check the DB as it may have stored part of the new invoice.");
+        }
     }
-    // sendData().catch(console.error);
 
     return (
         <>

@@ -102,7 +102,6 @@ function Invoice({invoice, shopDetails}) {
                     <InvoiceTable invoiceDetails={invoiceDetails}/>
                 </Modal.Body>
                 <Modal.Footer>
-                    <CreateNewInvoiceButton />
                 </Modal.Footer>
             </Modal>
         </>
