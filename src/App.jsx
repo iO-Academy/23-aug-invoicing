@@ -6,7 +6,9 @@ import Toolbar from "./components/Toolbar";
 import Footer from "./components/Footer";
 
 function App() {
-  const [invoices, setInvoices] = useState([{ id:'143', invoice_id: "testinvoice" }]);
+  const [invoices, setInvoices] = useState([
+    { id: "143", invoice_id: "testinvoice" },
+  ]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,11 +23,11 @@ function App() {
   }, []);
 
   const shopDetails = {
-    name: 'Matthew Thompson',
-    addressline1: 'Matthew\'s Den',
-    addressline2: 'Keynsham',
-    city: 'New York City'
-  }
+    name: "Matthew Thompson",
+    addressline1: "Matthew's Den",
+    addressline2: "Keynsham",
+    city: "New York City",
+  };
 
   return (
     <>
@@ -34,7 +36,7 @@ function App() {
           <Header invoicesjson={invoices} />
         </div>
         <div className="col-md">
-          <Toolbar />
+          <Toolbar shopDetails={shopDetails} />
         </div>
       </div>
       <InvoiceContainer invoices={invoices} shopDetails={shopDetails} />
