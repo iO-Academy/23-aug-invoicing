@@ -1,5 +1,4 @@
-
-function CreateNewInvoiceButton () {
+function CreateNewInvoiceButton() {
 
 // {formInput} coming from AJ.
     let formInput = {
@@ -30,11 +29,9 @@ function CreateNewInvoiceButton () {
         console.log(response.status);
         if (response.status === 200) {
             alert("Successfully created new invoice.");
-        }
-        else if (response.status === 400) {
+        } else if (response.status === 400) {
             alert("Invalid invoice data.");
-        }
-        else {
+        } else {
             alert("Unable to create invoice, check the DB as it may have stored part of the new invoice.");
         }
     }
@@ -49,6 +46,3 @@ function CreateNewInvoiceButton () {
 }
 
 export default CreateNewInvoiceButton
-
-
-
