@@ -2,8 +2,9 @@ import {useState, useEffect} from "react";
 import Modal from "react-bootstrap/Modal";
 import "../../index.css";
 
-import InvoiceTable from "../InvoiceTable/index.jsx";
-import GeneralInvoiceData from "../GeneralInvoiceData/index.jsx";
+import InvoiceTable from "../InvoiceTable";
+import GeneralInvoiceData from "../GeneralInvoiceData";
+import CreateNewInvoiceButton from "../CreateNewInvoiceButton";
 
 function Invoice({invoice, shopDetails}) {
     const {id, invoice_id, name, due, invoice_total, status, details, status_name} =
@@ -100,7 +101,9 @@ function Invoice({invoice, shopDetails}) {
                     />
                     <InvoiceTable invoiceDetails={invoiceDetails}/>
                 </Modal.Body>
-                <Modal.Footer></Modal.Footer>
+                <Modal.Footer>
+                    <CreateNewInvoiceButton />
+                </Modal.Footer>
             </Modal>
         </>
     );
