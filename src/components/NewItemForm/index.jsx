@@ -6,6 +6,7 @@ import NewItemRow from "../NewItemRow/";
 function NewItemForm() {
     const [itemIndex, setItemIndex] = useState([1]);
     const [total, setTotal] = useState(0);
+    const [invoiceObj, setInvoiceObj] = useState([{description:'', quantity:0, rate:0, total:0}])
 
     return (
         <>
@@ -17,7 +18,11 @@ function NewItemForm() {
                 <div className="col-2 align-items-center">Total</div>
             </div>
             <form method="post" className="d-flex flex-column justify-content-evenly">
-                {itemIndex.map((item, index) => <NewItemRow key={index} index={index} itemIndex= {itemIndex} setItemIndex= {setItemIndex} setTotal={setTotal}/>) }
+                {itemIndex.map((item, index) => {
+                    return (
+                <NewItemRow key={index} index={index} itemIndex= {itemIndex} setItemIndex= {setItemIndex} invoiceObj={invoiceObj} setInvoiceObj={setInvoiceObj}/>
+                )
+                })}
             </form>
             <div className="d-flex flex-row justify-content-end bg-warning fw-bold">
                 <span className="d-flex col-10 justify-content-end">Total</span>
