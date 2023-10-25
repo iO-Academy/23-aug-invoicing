@@ -46,10 +46,10 @@ function InvoiceHead({ shopDetails }) {
           <p className="fw-semibold mb-2 mt-3">To</p>
           <div className="col-6">
             <select
-              class="form-select align-self-start"
+              className="form-select align-self-start"
               aria-label="Default select example"
+              defaultValue='Select from client list'
             >
-              <option selected>Select from client list</option>
               {loading
                 ? null
                 : clientData.data.map((client) => {
