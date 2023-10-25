@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PlusIcon from "../ui/PlusIcon";
 import Modal from "react-bootstrap/Modal";
+import NewItemForm from "../NewItemForm/index.jsx";
 
 function Toolbar() {
   const [show, setShow] = useState(false);
@@ -36,7 +37,9 @@ function Toolbar() {
         <Modal.Header closeButton>
           <Modal.Title>Hello</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Hello</Modal.Body>
+        <Modal.Body>
+            <NewItemForm />
+        </Modal.Body>
         <Modal.Footer></Modal.Footer>
       </Modal>
     </>
