@@ -17,6 +17,23 @@ function InvoiceHead({ shopDetails }) {
     fetchClients();
   }, []);
 
+  const dueDate = new Date();
+  const currentDate = new Date();
+
+  dueDate.setDate(dueDate.getDate() + 30);
+
+  const formattedDueDate = dueDate.toLocaleString("en-gb", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+
+  const formattedCurrentDate = currentDate.toLocaleString("en-gb", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+
   return (
     <div className="container d-flex">
       <div className="col-8 d-flex flex-column">
@@ -53,9 +70,9 @@ function InvoiceHead({ shopDetails }) {
           Pending
         </p>
         <p className="fw-semibold mt-3 mb-2">Created</p>
-        <p>12 July 2022</p>
+        <p>{formattedCurrentDate}</p>
         <p className="fw-semibold mt-1 mb-2">Due</p>
-        <p>11 August 2022</p>
+        <p>{formattedDueDate}</p>
       </div>
     </div>
   );
