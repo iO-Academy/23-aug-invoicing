@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 
-function InvoiceHead({ shopDetails }) {
+function InvoiceHead({ shopDetails, setClientId}) {
   const [clientData, setClientData] = useState();
   const [loading, setLoading] = useState(true);
 
@@ -46,10 +46,11 @@ function InvoiceHead({ shopDetails }) {
           <p className="fw-semibold mb-2 mt-3">To</p>
           <div className="col-6">
             <select
-              class="form-select align-self-start"
+              className="form-select align-self-start"
               aria-label="Default select example"
+              defaultValue='Select from client list'
+              onChange={(e) => {setClientId(e.target.value);}}
             >
-              <option selected>Select from client list</option>
               {loading
                 ? null
                 : clientData.data.map((client) => {

@@ -2,10 +2,13 @@ import { useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import "../../index.css";
 
-import InvoiceTable from "../InvoiceTable/index.jsx";
-import GeneralInvoiceData from "../GeneralInvoiceData/index.jsx";
+import InvoiceTable from "../InvoiceTable";
+import GeneralInvoiceData from "../GeneralInvoiceData";
+import CreateNewInvoiceButton from "../CreateNewInvoiceButton";
 
 function Invoice({ invoice, shopDetails }) {
+  const INVOICE_URL = `https://invoicing-api.dev.io-academy.uk/invoices/${invoice.id}`;
+
   const {
     id,
     invoice_id,
@@ -44,9 +47,7 @@ function Invoice({ invoice, shopDetails }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(
-        `https://invoicing-api.dev.io-academy.uk/invoices/${invoice.id}`
-      );
+      const response = await fetch(INVOICE_URL);
       const json = await response.json();
       setInvoiceDetails(json.data);
     };
