@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 
 function StatusFilter() {
   const [status, setStatus] = useState();
-  const [joinedStatus, setJoinedStatus] = useState();
   const [loading, setLoading] = useState(true);
+	const [selectedStatus, setSelectedStatus] = useState();
+	
+	const INVOICE_URL = "https://invoicing-api.dev.io-academy.uk/invoices";
 
   const fetchStatus = async () => {
-    const res = await fetch("https://invoicing-api.dev.io-academy.uk/invoices");
+    const res = await fetch(INVOICE_URL);
     const data = await res.json();
     setStatus(data);
     setLoading(false);
@@ -14,12 +16,6 @@ function StatusFilter() {
 
   useEffect(() => {
     fetchStatus();
-    // if (!loading) {
-    //   let statusArray = [];
-    //   let statuses = status.data.status_name.filter((status_name) => {
-    //     return !statusArray.includes(status_name);
-    //   });
-    // }
   }, []);
 
   let completeStatus = [];
@@ -52,11 +48,15 @@ function StatusFilter() {
 
   if (!loading) {
     console.log(completeStatus);
+
+		console.log(selectedStatus);
     return (
       <>
         <select
           className="form-select align-self-start border-0 w-auto fw-bold"
           aria-label="Default select example"
+					onChange= {(e) =>
+					setSelectedStatus(e.target.value)}
         >
           <option selected>Filter by Status</option>
           {completeStatus.map((status) => {
