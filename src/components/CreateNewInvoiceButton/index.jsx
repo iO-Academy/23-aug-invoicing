@@ -1,17 +1,16 @@
-function CreateNewInvoiceButton({quantity, rate, description, total}) {
-// {formInput} coming from AJ.
+function CreateNewInvoiceButton({invoiceObj}) {
+
+    // const calculatedTotal = invoiceObj.reduce((invoice, currentValue) => invoice + currentValue, 0);
+
+
+
     let formInput = {
         "client": 4,
-        "total": total,
-        "details": [
-            {
-                "quantity": Number(quantity),
-                "rate": Number(rate),
-                "total": total,
-                "description": description
-            }
-        ]
+        "total": calculatedTotal,
+        "details": invoiceObj
     }
+
+    console.log(JSON.stringify(formInput));
 
     const sendData = async () => {
         let customSettings = {

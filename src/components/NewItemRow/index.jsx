@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 
 function NewItemRow({
   index,
-  setItemIndex,
-  itemIndex,
   invoiceObj,
   setInvoiceObj,
 }) {
+
+    const [calculatedTotal, setCalculatedTotal] = useState(0.0);
   const [itemInfo, setItemInfo] = useState({
     description: "",
     quantity: 0,
@@ -14,12 +14,12 @@ function NewItemRow({
     total: 0,
   });
   const rowTotal = (quantity, rate) => {
-    return quantity && rate
+    setCalculatedTotal(quantity && rate
       ? (Number(quantity) * Number(rate)).toFixed(2)
-      : (0).toFixed(2);
+      : (0).toFixed(2))
   };
 
-  // setInvoiceObj([...invoiceObj, itemInfo]);
+
 
   return (
     <div className="d-flex flex-row w-100 small gap-1">
@@ -49,7 +49,9 @@ function NewItemRow({
           onChange={(e) => {
             setItemInfo({ ...itemInfo, quantity: e.target.value });
             let newItemInfo = [...invoiceObj];
-            newItemInfo[index].quantity = e.target.value;
+            newItemInfo[index].quantity = Number(e.target.value);
+            rowTotal(invoiceObj[index].rate, invoiceObj[index].quantity);
+            newItemInfo[index].total = calculatedTotal;
             setInvoiceObj(newItemInfo);
           }}
         />
@@ -65,7 +67,9 @@ function NewItemRow({
             onChange={(e) => {
               setItemInfo({ ...itemInfo, rate: e.target.value });
               let newItemInfo = [...invoiceObj];
-              newItemInfo[index].rate = e.target.value;
+              newItemInfo[index].rate = Number(e.target.value);
+              rowTotal(invoiceObj[index].rate, invoiceObj[index].quantity);
+              newItemInfo[index].total = calculatedTotal;
               setInvoiceObj(newItemInfo);
             }}
             className="h-25 form-control input-lg p-1"
@@ -75,7 +79,7 @@ function NewItemRow({
         </div>
       </div>
       <div className="col-2">
-        <p>£{rowTotal(itemInfo.quantity, itemInfo.rate)}</p>
+        <p>£{calculatedTotal}</p>
       </div>
       <div className="d-flex flex-column w-100 gap-2">
         <span

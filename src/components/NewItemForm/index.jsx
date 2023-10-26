@@ -4,11 +4,10 @@ import CreateNewInvoiceButton from "../CreateNewInvoiceButton/index.jsx";
 import NewItemRow from "../NewItemRow/";
 
 function NewItemForm() {
-  const [itemIndex, setItemIndex] = useState([1]);
-  const [total, setTotal] = useState(0);
   const [invoiceObj, setInvoiceObj] = useState([
     { description: "", quantity: 0, rate: 0, total: 0 },
   ]);
+
   console.log(invoiceObj);
   return (
     <>
@@ -28,8 +27,6 @@ function NewItemForm() {
               <NewItemRow
                 key={index}
                 index={index}
-                itemIndex={itemIndex}
-                setItemIndex={setItemIndex}
                 invoiceObj={invoiceObj}
                 setInvoiceObj={setInvoiceObj}
               />
@@ -42,7 +39,7 @@ function NewItemForm() {
         </div>
       </div>
       <div>
-        {/*<CreateNewInvoiceButton quantity={quantity} rate={rate} description={description} total={total}/>*/}
+        <CreateNewInvoiceButton invoiceObj={invoiceObj}/>
       </div>
     </>
   );
