@@ -25,7 +25,7 @@ function NewItemRow({
             name="textarea"
             className="w-100"
             rows="4"
-            placeholder="Description"
+            placeholder="Optional description"
             value={itemInfo["description"]}
             required
             onChange={(e) => {
