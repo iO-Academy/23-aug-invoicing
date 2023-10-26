@@ -43,6 +43,9 @@ function StatusFilter({ setFilterStatus }) {
     completeStatus = statusNumber.map((number, index) => {
       return { name: statusName[index], number: number };
     });
+
+		completeStatus.sort((a, b) => a.name.localeCompare(b.name));
+		
   }
 
   if (!loading) {
@@ -53,7 +56,7 @@ function StatusFilter({ setFilterStatus }) {
           aria-label="Default select example"
           onChange={(e) => setFilterStatus(e.target.value)}
         >
-          <option selected>Filter by Status</option>
+          <option selected disabled>Filter by Status</option>
           <option value="0">All invoices</option>
           {completeStatus.map((status) => {
             return <option value={status.number}>{status.name}</option>;
