@@ -9,7 +9,7 @@ function NewItemForm({clientId}) {
     ]);
 
     let itemTotals = invoiceObj.map((invoice) => Number(invoice.total));
-    let total = itemTotals.reduce((item, currentVal) => item + currentVal)
+    let total = itemTotals.reduce((item, currentVal) => item + currentVal).toFixed(2)
 
     return (
         <>

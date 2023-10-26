@@ -9,8 +9,8 @@ function NewItemRow({
     const [itemInfo, setItemInfo] = useState({
         description: "",
         quantity: 0,
-        rate: 0,
-        total: 0,
+        rate: 0.00,
+        total: 0.00,
     });
     const rowTotal = (quantity, rate) => {
         return quantity && rate
@@ -27,6 +27,7 @@ function NewItemRow({
             rows="4"
             placeholder="Description"
             value={itemInfo["description"]}
+            required
             onChange={(e) => {
                 {
                     setItemInfo({...itemInfo, description: e.target.value});
@@ -40,25 +41,18 @@ function NewItemRow({
             <div className="col-2">
                 <input
                     type="number"
+                    min="0"
                     value={invoiceObj[index].quantity}
                     className="w-100 p-1"
                     placeholder="Quantity"
+                    required
                     onChange={(e) => {
-                        if (e.target.value >= 0) {
-
                             setItemInfo({...itemInfo, quantity: e.target.value});
                             let newItemInfo = [...invoiceObj];
                             newItemInfo[index].quantity = e.target.value;
 
                             let total = rowTotal(itemInfo.rate, e.target.value);
                             newItemInfo[index].total = total;
-
-                            setInvoiceObj(newItemInfo);
-                        }
-                        else {
-                            alert("Enter positive number");
-                        }
-
                     }}
                 />
             </div>
@@ -69,9 +63,11 @@ function NewItemRow({
           </span>
                     <input
                         type="number"
+                        min="0"
+                        step="0.01"
+                        required
                         value={invoiceObj[index].rate}
                         onChange={(e) => {
-                            if (e.target.value >= 0) {
                                 setItemInfo({...itemInfo, rate: e.target.value});
                                 let newItemInfo = [...invoiceObj];
                                 newItemInfo[index].rate = e.target.value;
@@ -80,10 +76,6 @@ function NewItemRow({
                                 newItemInfo[index].total = total;
 
                                 setInvoiceObj(newItemInfo);
-                            }
-                            else {
-                                alert("Enter positive number");
-                            }
                         }}
                         className="h-25 form-control input-lg p-1"
                         readOnly=""
