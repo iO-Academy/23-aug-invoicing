@@ -1,16 +1,10 @@
-function CreateNewInvoiceButton({invoiceObj}) {
-
-    // const calculatedTotal = invoiceObj.reduce((invoice, currentValue) => invoice + currentValue, 0);
-
-
+function CreateNewInvoiceButton({invoiceObj, total}) {
 
     let formInput = {
-        "client": 4,
-        "total": calculatedTotal,
+        "client": 7,
+        "total": total,
         "details": invoiceObj
     }
-
-    console.log(JSON.stringify(formInput));
 
     const sendData = async () => {
         let customSettings = {
