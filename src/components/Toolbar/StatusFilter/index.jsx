@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 function StatusFilter() {
   const [status, setStatus] = useState();
+  const [joinedStatus, setJoinedStatus] = useState();
   const [loading, setLoading] = useState(true);
 
   const fetchStatus = async () => {
@@ -21,37 +22,50 @@ function StatusFilter() {
     // }
   }, []);
 
+  let completeStatus = [];
+
   if (!loading) {
-    let stuff = [];
+    let newStatusArray = [];
     status.data.map((item) => {
-      stuff.push({ status: item.status, name: item.status_name });
+      newStatusArray.push({ status: item.status, name: item.status_name });
     });
 
-    let newStuff = [];
-    // console.log(newStuff.includes({ status: "3", name: "Cancelled" }));
+    let statusNumber = [];
 
-    stuff.map((one_stuff, index) => {
-      if (newStuff[index]) {
-        if (newStuff[index].status !== one_stuff.status) {
-          newStuff.push(one_stuff);
-        }
+    newStatusArray.map((item) => {
+      if (statusNumber.includes(item.status) === false) {
+        statusNumber.push(item.status);
       }
     });
 
-    console.log(newStuff);
+    let statusName = [];
+    newStatusArray.map((item) => {
+      if (statusName.includes(item.name) === false) {
+        statusName.push(item.name);
+      }
+    });
+
+    completeStatus = statusNumber.map((number, index) => {
+      return { name: statusName[index], number: number };
+    });
   }
 
-  return (
-    <>
-      <select
-        className="form-select align-self-start border-0 w-auto fw-bold"
-        aria-label="Default select example"
-      >
-        <option selected>Filter by Status</option>
-        <option>Test</option>
-      </select>
-    </>
-  );
+  if (!loading) {
+    console.log(completeStatus);
+    return (
+      <>
+        <select
+          className="form-select align-self-start border-0 w-auto fw-bold"
+          aria-label="Default select example"
+        >
+          <option selected>Filter by Status</option>
+          {completeStatus.map((status) => {
+            return <option value={status.number}>{status.name}</option>;
+          })}
+        </select>
+      </>
+    );
+  }
 }
 
 export default StatusFilter;
