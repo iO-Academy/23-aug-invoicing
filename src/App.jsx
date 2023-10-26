@@ -6,6 +6,7 @@ import Toolbar from "./components/Toolbar";
 import Footer from "./components/Footer";
 
 function App() {
+  const [filterStatus, setFilterStatus] = useState();
   const INVOICE_URL = `https://invoicing-api.dev.io-academy.uk/invoices`;
 
   const [loading, setLoading] = useState(true);
@@ -14,16 +15,31 @@ function App() {
     { id: "143", invoice_id: "testinvoice" },
   ]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(INVOICE_URL);
-      const json = await response.json();
-      setInvoices(json.data);
-      setLoading(false);
-    };
+  const fetchAllData = async () => {
+    const response = await fetch(INVOICE_URL);
+    const json = await response.json();
+    setInvoices(json.data);
+    setLoading(false);
+  };
 
-    fetchData().catch(console.error);
+  useEffect(() => {
+    fetchAllData().catch(console.error);
   }, []);
+
+  const fetchFilteredData = async (status) => {
+    const response = await fetch(INVOICE_URL + "?status=" + status);
+    const json = await response.json();
+    setInvoices(json.data);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    if (filterStatus === '0') {
+      fetchAllData().catch(console.error);
+    } else {
+      fetchFilteredData(filterStatus).catch(console.error);
+    }
+  }, [filterStatus]);
 
   const shopDetails = {
     name: "Matthew Thompson",
@@ -54,10 +70,17 @@ function App() {
             <Header invoicesjson={invoices} />
           </div>
           <div className="col-md">
-            <Toolbar shopDetails={shopDetails} />
+            <Toolbar
+              shopDetails={shopDetails}
+              setFilterStatus={setFilterStatus}
+            />
           </div>
         </div>
-        <InvoiceContainer invoices={invoices} shopDetails={shopDetails} />
+        <InvoiceContainer
+          invoices={invoices}
+          shopDetails={shopDetails}
+          filterStatus={filterStatus}
+        />
         <Footer />
       </>
     );
