@@ -71,7 +71,7 @@ function Invoice({ invoice, shopDetails }) {
     month: "short",
     year: "numeric",
   });
-  
+
   return (
     <>
       <div
