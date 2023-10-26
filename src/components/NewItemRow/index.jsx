@@ -40,18 +40,25 @@ function NewItemRow({
             <div className="col-2">
                 <input
                     type="number"
-                    value={itemInfo["quantity"]}
+                    value={invoiceObj[index].quantity}
                     className="w-100 p-1"
                     placeholder="Quantity"
                     onChange={(e) => {
-                        setItemInfo({...itemInfo, quantity: e.target.value});
-                        let newItemInfo = [...invoiceObj];
-                        newItemInfo[index].quantity = e.target.value;
+                        if (e.target.value >= 0) {
 
-                        let total = rowTotal(itemInfo.rate, e.target.value);
-                        newItemInfo[index].total = total;
+                            setItemInfo({...itemInfo, quantity: e.target.value});
+                            let newItemInfo = [...invoiceObj];
+                            newItemInfo[index].quantity = e.target.value;
 
-                        setInvoiceObj(newItemInfo);
+                            let total = rowTotal(itemInfo.rate, e.target.value);
+                            newItemInfo[index].total = total;
+
+                            setInvoiceObj(newItemInfo);
+                        }
+                        else {
+                            alert("Enter positive number");
+                        }
+
                     }}
                 />
             </div>
@@ -62,16 +69,21 @@ function NewItemRow({
           </span>
                     <input
                         type="number"
-                        value={itemInfo["rate"]}
+                        value={invoiceObj[index].rate}
                         onChange={(e) => {
-                            setItemInfo({...itemInfo, rate: e.target.value});
-                            let newItemInfo = [...invoiceObj];
-                            newItemInfo[index].rate = e.target.value;
+                            if (e.target.value >= 0) {
+                                setItemInfo({...itemInfo, rate: e.target.value});
+                                let newItemInfo = [...invoiceObj];
+                                newItemInfo[index].rate = e.target.value;
 
-                            let total = rowTotal(e.target.value, itemInfo.quantity);
-                            newItemInfo[index].total = total;
+                                let total = rowTotal(e.target.value, itemInfo.quantity);
+                                newItemInfo[index].total = total;
 
-                            setInvoiceObj(newItemInfo);
+                                setInvoiceObj(newItemInfo);
+                            }
+                            else {
+                                alert("Enter positive number");
+                            }
                         }}
                         className="h-25 form-control input-lg p-1"
                         readOnly=""
@@ -94,7 +106,15 @@ function NewItemRow({
         >
           +
         </span>
-                <span className="btn btn-danger">-</span>
+                <span
+                    className="btn btn-danger"
+                    onClick={() => {
+                        let newInvoiceObj = invoiceObj;
+                        newInvoiceObj = invoiceObj.filter((value) => {
+                            return invoiceObj.indexOf(value) !== index;
+                        });
+                        setInvoiceObj(newInvoiceObj);
+                    }}>-</span>
             </div>
         </div>
     );
