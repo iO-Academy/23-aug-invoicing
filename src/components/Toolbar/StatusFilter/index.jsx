@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 
-function StatusFilter() {
+function StatusFilter({ setFilterStatus }) {
   const [status, setStatus] = useState();
   const [loading, setLoading] = useState(true);
-	const [selectedStatus, setSelectedStatus] = useState();
-	
-	const INVOICE_URL = "https://invoicing-api.dev.io-academy.uk/invoices";
+
+  const INVOICE_URL = "https://invoicing-api.dev.io-academy.uk/invoices";
 
   const fetchStatus = async () => {
     const res = await fetch(INVOICE_URL);
@@ -47,18 +46,15 @@ function StatusFilter() {
   }
 
   if (!loading) {
-    console.log(completeStatus);
-
-		console.log(selectedStatus);
     return (
       <>
         <select
           className="form-select align-self-start border-0 w-auto fw-bold"
           aria-label="Default select example"
-					onChange= {(e) =>
-					setSelectedStatus(e.target.value)}
+          onChange={(e) => setFilterStatus(e.target.value)}
         >
           <option selected>Filter by Status</option>
+          <option value="0">All invoices</option>
           {completeStatus.map((status) => {
             return <option value={status.number}>{status.name}</option>;
           })}

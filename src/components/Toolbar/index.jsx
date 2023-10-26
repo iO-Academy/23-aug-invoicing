@@ -5,7 +5,7 @@ import NewItemForm from "../NewItemForm/index.jsx";
 import InvoiceHead from "../InvoiceHead";
 import StatusFilter from "./StatusFilter";
 
-function Toolbar({ shopDetails }) {
+function Toolbar({ shopDetails, setFilterStatus }) {
   const [show, setShow] = useState(false);
   const [clientId, setClientId] = useState(1);
   return (
@@ -13,7 +13,7 @@ function Toolbar({ shopDetails }) {
       <div className="row my-4 my-sm-0 mx-0">
         <div className="col d-flex justify-content-start p-0">
           {/* <button className="btn dropdown-toggle btn-sm">Sort by</button> */}
-          <StatusFilter />
+          <StatusFilter setFilterStatus={setFilterStatus} />
         </div>
         <div className="col d-flex justify-content-end p-0">
           <button
