@@ -21,7 +21,7 @@ function NewItemRow({ index, invoiceObj, setInvoiceObj }) {
           className="w-100"
           rows="4"
           placeholder="Optional description"
-          value={invoiceObj.description}
+          value={invoiceObj[index].description}
           required
           onChange={(e) => {
             {
