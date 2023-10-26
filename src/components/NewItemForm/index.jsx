@@ -8,7 +8,6 @@ function NewItemForm({clientId}) {
         {description: "", quantity: 0, rate: 0, total: 0},
     ]);
 
-
     let itemTotals = invoiceObj.map((invoice) => Number(invoice.total));
     let total = itemTotals.reduce((item, currentVal) => item + currentVal)
 
