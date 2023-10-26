@@ -6,6 +6,7 @@ import InvoiceHead from "../InvoiceHead";
 
 function Toolbar({ shopDetails }) {
   const [show, setShow] = useState(false);
+  const [clientId, setClientId] = useState(1);
   return (
     <>
       <div className="row my-4 my-sm-0 mx-0">
@@ -39,8 +40,8 @@ function Toolbar({ shopDetails }) {
           <Modal.Title>New invoice</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <InvoiceHead shopDetails={shopDetails} />
-          <NewItemForm />
+          <InvoiceHead shopDetails={shopDetails} setClientId={setClientId}/>
+          <NewItemForm clientId={clientId}/>
 
         </Modal.Body>
         <Modal.Footer></Modal.Footer>

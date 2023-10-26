@@ -1,7 +1,7 @@
-function CreateNewInvoiceButton({invoiceObj, total}) {
+function CreateNewInvoiceButton({invoiceObj, total, clientId}) {
 
     let formInput = {
-        "client": 7,
+        "client": clientId,
         "total": total,
         "details": invoiceObj
     }

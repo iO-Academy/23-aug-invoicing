@@ -3,7 +3,7 @@ import React from "react";
 import CreateNewInvoiceButton from "../CreateNewInvoiceButton/index.jsx";
 import NewItemRow from "../NewItemRow/";
 
-function NewItemForm() {
+function NewItemForm({clientId}) {
     const [invoiceObj, setInvoiceObj] = useState([
         {description: "", quantity: 0, rate: 0, total: 0},
     ]);
@@ -42,7 +42,7 @@ function NewItemForm() {
                 </div>
             </div>
             <div>
-                <CreateNewInvoiceButton invoiceObj={invoiceObj} total={total}/>
+                <CreateNewInvoiceButton invoiceObj={invoiceObj} total={total} clientId={clientId}/>
             </div>
         </>
     );
