@@ -6,17 +6,20 @@ import Toolbar from "./components/Toolbar";
 import Footer from "./components/Footer";
 
 function App() {
+  const INVOICE_URL = `https://invoicing-api.dev.io-academy.uk/invoices`;
+
+  const [loading, setLoading] = useState(true);
+
   const [invoices, setInvoices] = useState([
     { id: "143", invoice_id: "testinvoice" },
   ]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(
-        "https://invoicing-api.dev.io-academy.uk/invoices"
-      );
+      const response = await fetch(INVOICE_URL);
       const json = await response.json();
       setInvoices(json.data);
+      setLoading(false);
     };
 
     fetchData().catch(console.error);
@@ -29,19 +32,35 @@ function App() {
     city: "New York City",
   };
 
-  return (
-    <>
-      <div className="container row d-flex align-items-end justify-content-center m-auto mb-3">
-        <div className="col-md">
-          <Header invoicesjson={invoices} />
+  if (loading) {
+    return (
+      <>
+        <div className="container row d-flex align-items-end justify-content-center m-auto mb-3">
+          <div className="col-md">
+            <Header invoicesjson={invoices} />
+          </div>
+          <div className="col-md">
+            <Toolbar shopDetails={shopDetails} />
+          </div>
+          <div className="d-flex justify-content-center mt-5">Loading</div>
         </div>
-        <div className="col-md">
-          <Toolbar shopDetails={shopDetails} />
+      </>
+    );
+  } else {
+    return (
+      <>
+        <div className="container row d-flex align-items-end justify-content-center m-auto mb-3">
+          <div className="col-md">
+            <Header invoicesjson={invoices} />
+          </div>
+          <div className="col-md">
+            <Toolbar shopDetails={shopDetails} />
+          </div>
         </div>
-      </div>
-      <InvoiceContainer invoices={invoices} shopDetails={shopDetails} />
-      <Footer />
-    </>
-  );
+        <InvoiceContainer invoices={invoices} shopDetails={shopDetails} />
+        <Footer />
+      </>
+    );
+  }
 }
 export default App;

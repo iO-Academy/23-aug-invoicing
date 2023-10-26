@@ -19,6 +19,7 @@ function InvoiceTable({ invoiceDetails }) {
     (total, current) => total + Number(current.total),
     0
   );
+
   return (
     <>
       <div className="App">
