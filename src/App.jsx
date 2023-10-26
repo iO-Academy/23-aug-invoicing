@@ -6,6 +6,8 @@ import Toolbar from "./components/Toolbar";
 import Footer from "./components/Footer";
 
 function App() {
+  const INVOICE_URL = `https://invoicing-api.dev.io-academy.uk/invoices`;
+
   const [loading, setLoading] = useState(true);
 
   const [invoices, setInvoices] = useState([
@@ -14,9 +16,7 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(
-        "https://invoicing-api.dev.io-academy.uk/invoices"
-      );
+      const response = await fetch(INVOICE_URL);
       const json = await response.json();
       setInvoices(json.data);
       setLoading(false);
