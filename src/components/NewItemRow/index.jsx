@@ -53,6 +53,7 @@ function NewItemRow({
 
                             let total = rowTotal(itemInfo.rate, e.target.value);
                             newItemInfo[index].total = total;
+                            setInvoiceObj(newItemInfo);
                     }}
                 />
             </div>

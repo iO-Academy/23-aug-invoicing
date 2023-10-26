@@ -8,8 +8,9 @@ function NewItemForm({clientId}) {
         {description: "", quantity: 0, rate: 0, total: 0},
     ]);
 
+
     let itemTotals = invoiceObj.map((invoice) => Number(invoice.total));
-    let total = itemTotals.reduce((item, currentVal) => item + currentVal).toFixed(2)
+    let total = itemTotals.reduce((item, currentVal) => item + currentVal)
 
     return (
         <>
@@ -41,7 +42,7 @@ function NewItemForm({clientId}) {
                     <span className="col-2 d-flex justify-content-end">£{total}</span>
                 </div>
             </div>
-            <div>
+            <div className='d-flex w-100 justify-content-end py-2'>
                 <CreateNewInvoiceButton invoiceObj={invoiceObj} total={total} clientId={clientId}/>
             </div>
         </>
