@@ -1,16 +1,9 @@
-function CreateNewInvoiceButton({quantity, rate, description, total}) {
-// {formInput} coming from AJ.
+function CreateNewInvoiceButton({invoiceObj, total, clientId}) {
+
     let formInput = {
-        "client": 4,
+        "client": clientId,
         "total": total,
-        "details": [
-            {
-                "quantity": Number(quantity),
-                "rate": Number(rate),
-                "total": total,
-                "description": description
-            }
-        ]
+        "details": invoiceObj
     }
 
     const sendData = async () => {

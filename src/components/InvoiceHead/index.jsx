@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 
-function InvoiceHead({ shopDetails }) {
+function InvoiceHead({ shopDetails, setClientId}) {
   const [clientData, setClientData] = useState();
   const [loading, setLoading] = useState(true);
 
@@ -49,6 +49,7 @@ function InvoiceHead({ shopDetails }) {
               className="form-select align-self-start"
               aria-label="Default select example"
               defaultValue='Select from client list'
+              onChange={(e) => {setClientId(e.target.value);}}
             >
               {loading
                 ? null
