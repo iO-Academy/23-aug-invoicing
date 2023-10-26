@@ -14,6 +14,8 @@ function App() {
     { id: "143", invoice_id: "testinvoice" },
   ]);
 
+  const [statusDropDown, setstatusDropDown] = useState("");
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(INVOICE_URL);
@@ -54,10 +56,19 @@ function App() {
             <Header invoicesjson={invoices} />
           </div>
           <div className="col-md">
-            <Toolbar shopDetails={shopDetails} />
+            <Toolbar
+              shopDetails={shopDetails}
+              statusDropDown={statusDropDown}
+              setstatusDropDown={setstatusDropDown}
+            />
           </div>
         </div>
-        <InvoiceContainer invoices={invoices} shopDetails={shopDetails} />
+        <InvoiceContainer
+          invoices={invoices}
+          shopDetails={shopDetails}
+          statusDropDown={statusDropDown}
+          setstatusDropDown={setstatusDropDown}
+        />
         <Footer />
       </>
     );

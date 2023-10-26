@@ -4,25 +4,68 @@ import Modal from "react-bootstrap/Modal";
 import NewItemForm from "../NewItemForm/index.jsx";
 import InvoiceHead from "../InvoiceHead";
 
-function Toolbar({ shopDetails }) {
+function Toolbar({ shopDetails, statusDropDown, setstatusDropDown }) {
   const [show, setShow] = useState(false);
   const [clientId, setClientId] = useState(1);
+
   return (
     <>
       <div className="row my-4 my-sm-0 mx-0">
         <div className="col d-flex justify-content-start p-0">
           <button className="btn dropdown-toggle btn-sm">Sort by</button>
-          <button className="btn dropdown-toggle btn-sm">
-            Filter by Status
-          </button>
+
+          {/* <button
+            className="btn dropdown-toggle btn-sm"
+            onClick={console.log("howdy")}>
+            Filter by statusDropDown
+          </button> */}
+
+          <div className="col-6">
+            <select
+              className="form-select align-self-start"
+              aria-label="Default select example"
+              defaultValue="Filter by statusDropDown"
+              value={statusDropDown}
+              onChange={(e) => {
+                setstatusDropDown(e.target.value);
+              }}>
+              <option
+                value="Paid"
+                onClick={(e) => {
+                  setstatusDropDown(e.target.value);
+                }}>
+                Paid
+              </option>
+              <option
+                value="Pending"
+                onClick={(e) => {
+                  setstatusDropDown(e.target.value);
+                }}>
+                Pending
+              </option>
+              <option
+                value="Cancelled"
+                onClick={(e) => {
+                  setstatusDropDown(e.target.value);
+                }}>
+                Cancelled
+              </option>
+              <option
+                value="Overdue"
+                onClick={(e) => {
+                  setstatusDropDown(e.target.value);
+                }}>
+                Overdue
+              </option>
+            </select>
+          </div>
         </div>
         <div className="col d-flex justify-content-end p-0">
           <button
             className="btn btn-info text-white d-inline btn-sm d-flex align-items-center"
             onClick={() => {
               setShow(true);
-            }}
-          >
+            }}>
             <PlusIcon />
             New Invoice
           </button>
@@ -34,15 +77,13 @@ function Toolbar({ shopDetails }) {
           setShow(false);
         }}
         centered
-        size="lg"
-      >
+        size="lg">
         <Modal.Header closeButton>
           <Modal.Title>New invoice</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <InvoiceHead shopDetails={shopDetails} setClientId={setClientId}/>
-          <NewItemForm clientId={clientId}/>
-
+          <InvoiceHead shopDetails={shopDetails} setClientId={setClientId} />
+          <NewItemForm clientId={clientId} />
         </Modal.Body>
         <Modal.Footer></Modal.Footer>
       </Modal>
