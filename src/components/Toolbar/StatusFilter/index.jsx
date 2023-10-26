@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function StatusFilter({ setFilterStatus }) {
+function StatusDropdown({ setFilterStatus }) {
   const [status, setStatus] = useState();
   const [loading, setLoading] = useState(true);
 
@@ -20,22 +20,20 @@ function StatusFilter({ setFilterStatus }) {
   let completeStatus = [];
 
   if (!loading) {
-    let newStatusArray = [];
-    status.data.map((item) => {
-      newStatusArray.push({ status: item.status, name: item.status_name });
-    });
+		const newStatusArray = status.data.map((item) => 
+		{return { status: item.status, name: item.status_name }});
 
     let statusNumber = [];
 
     newStatusArray.map((item) => {
-      if (statusNumber.includes(item.status) === false) {
+      if (!statusNumber.includes(item.status)) {
         statusNumber.push(item.status);
       }
     });
 
     let statusName = [];
     newStatusArray.map((item) => {
-      if (statusName.includes(item.name) === false) {
+      if (!statusName.includes(item.name)) {
         statusName.push(item.name);
       }
     });
@@ -67,4 +65,4 @@ function StatusFilter({ setFilterStatus }) {
   }
 }
 
-export default StatusFilter;
+export default StatusDropdown;

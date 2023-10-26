@@ -34,7 +34,7 @@ function App() {
   };
 
   useEffect(() => {
-    if (filterStatus == 0) {
+    if (filterStatus === '0') {
       fetchAllData().catch(console.error);
     } else {
       fetchFilteredData(filterStatus).catch(console.error);
